@@ -1,0 +1,189 @@
+#name-select-container {
+    position: relative;
+    width: 250px;
+}
+
+#search-input {
+    width: 100%;
+    padding: 8px;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+#results-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    background-color: white;
+    display: none;
+    z-index: 1000;
+}
+
+.result-item {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.result-item:hover {
+    background-color: #f0f0f0;
+}
+
+#main-strip {
+    background-color: aquamarine;
+    padding: 5%;
+    text-align: center;
+    font-size: 42pt;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.text {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 14pt;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+#parent {
+    background-color: rgb(245, 245, 245);
+    min-height: 100%;
+}
+
+#location, .additional-info-item {
+    border: 2px solid black;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    background-color: azure;
+}
+
+.additional-info-text {
+    padding-left: 10px;
+}
+
+#location-text, .additional-info-head {
+    background-color: #343a40;
+    padding: 10px;
+    color: white;
+    text-align: center;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.location-paragraph {
+    margin-left: 20px;
+}
+
+#subtext {
+    font-size: 10pt;
+}
+
+#temp-subtext {
+    font-size: 14pt;
+}
+
+.main-info {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 36pt;
+}
+
+#error-message {
+    background-color: rgb(255, 189, 189);
+    padding: 10px 10px 0px;
+    border: 2px solid black;
+    text-align: center;
+    width: fit-content;
+    margin: auto;
+}
+
+#city-head {
+    text-align: center;
+}
+
+.forecast-card {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: 2px solid #c4c4c4;
+    margin: 15px;
+}
+
+.forecast-card:hover {
+    background-color: #e9ecef;
+}
+
+.forecast-details {
+    margin-top: 20px;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.additional-info-item {
+    flex: 1 1 22%;
+    margin-bottom: 1rem;
+    margin: 10px;
+}
+
+@media (max-width: 768px) {
+    .container.d-flex {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .additional-info-item {
+        flex-basis: 48%;
+        margin-right: 2%;
+    }
+
+    .additional-info-item:last-child {
+        margin-right: 0;
+    }
+
+    .forecast-card {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    #location {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+}
+
+.container {
+    padding: 10px;
+    width: 100%;
+}
+
+#location {
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.alert-div {
+    padding: 20px;
+    background-color: rgb(255, 255, 192);
+    border: 2px solid rgb(170, 170, 0);
+    margin: 20px;
+}
+
+.severe {
+    background-color: rgb(255, 189, 189);
+    border: 2px solid red;
+}
+
+.alerts {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}

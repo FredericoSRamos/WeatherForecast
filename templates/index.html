@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <br>
+    <h3 id="city-head">Type a city name below:</h3>
+    <br><br><br>
+    <div class="container" id="name-select-container">
+        <form class="d-flex align-items-center justify-content-center" action="/cities" method="get">
+            <input class="p-2 mx-2 my-2" id="search-input" name="city" placeholder="City..." type="text">
+            <button class="btn btn-primary p-2 mx-2 my-2" type="submit">Search</button>
+        </form>
+        <div id="results-dropdown"></div>
+    </div>
+    <br>
+    {% if message %}
+        <div class="d-flex align-items-center justify-content-center" id="error-message">
+            <p id="error-text">{{ message }}</p>
+        </div>
+    {% endif %}
+    <script src="../static/index.js"></script>
+
+{% endblock %}

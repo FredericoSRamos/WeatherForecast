@@ -1,0 +1,5 @@
+/.venv
+/__pycache__
+
+# Ignore configuration file with the API key
+static/config.json 
