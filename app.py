@@ -35,9 +35,10 @@ def cities():
 
         if alerts.status_code == 200:
             return render_template("weather.html", location=data["location"], current=data["current"], forecasts=data["forecast"]["forecastday"], alerts=alerts.json()["alerts"]["alert"])
-        else:
-            return render_template("weather.html", location=data["location"], current=data["current"], forecasts=data["forecast"]["forecastday"])
-    else:
-        error = data["error"]
-        message = f"Error {response.status_code}: {error.get('message', 'No information provided.')} Error code: {error.get('code', 'No error code provided.')}"
-        return render_template("index.html", message=message)
+
+        return render_template("weather.html", location=data["location"], current=data["current"], forecasts=data["forecast"]["forecastday"])
+
+
+    error = data["error"]
+    message = f"Error {response.status_code}: {error.get('message', 'No information provided.')} Error code: {error.get('code', 'No error code provided.')}"
+    return render_template("index.html", message=message)

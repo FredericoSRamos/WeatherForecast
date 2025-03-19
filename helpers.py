@@ -16,5 +16,8 @@ def convert_time(time):
     split_time = info[0].split(':')
     if time.endswith("AM"):
         return info[0]
-    else:
+
+    try:
         return str(int(split_time[0]) + 12) + ":" + split_time[1]
+    except:
+        return ""
