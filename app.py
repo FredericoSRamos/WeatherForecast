@@ -26,7 +26,7 @@ def cities():
     url = "http://api.weatherapi.com/v1/"
     key = "?key=" + config["key"]
 
-    response = requests.get(url + "forecast.json" + key + "&q=" + city + "&days=3&aqi=yes")
+    response = requests.get(url + "forecast.json" + key + "&q=" + city + "&aqi=yes&days=3")
 
     data = response.json()
 
@@ -34,9 +34,9 @@ def cities():
         alerts = requests.get(url + "alerts.json" + key + "&q=" + city)
 
         if alerts.status_code == 200:
-            return render_template("weather.html", location=data["location"], current=data["current"], forecasts=data["forecast"]["forecastday"], alerts=alerts.json()["alerts"]["alert"])
+            return render_template("weather.html", location=data["location"], current=data["current"], air_quality=data["current"]["air_quality"], forecasts=data["forecast"]["forecastday"], alerts=alerts.json()["alerts"]["alert"])
 
-        return render_template("weather.html", location=data["location"], current=data["current"], forecasts=data["forecast"]["forecastday"])
+        return render_template("weather.html", location=data["location"], current=data["current"], air_quality=data["current"]["air_quality"], forecasts=data["forecast"]["forecastday"])
 
 
     error = data["error"]

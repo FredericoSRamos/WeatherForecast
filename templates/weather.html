@@ -84,10 +84,80 @@
                 </div>
             </div>
         {% endfor %}
-        <br><br>
-        <h3>Select a date below to get more detailed information about the weather:</h3>
-        <br>
     </div>
+    <br>
+    <h1>Air Quality</h1>
+    <br>
+    <div>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Pollutant</th>
+                    <th>Concentration</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>CO (Carbon Monoxide)</td>
+                    <td>{{ air_quality.co }} µg/m³</td>
+                </tr>
+                <tr>
+                    <td>NO₂ (Nitrogen Dioxide)</td>
+                    <td>{{ air_quality.no2 }} µg/m³</td>
+                </tr>
+                <tr>
+                    <td>O₃ (Ozone)</td>
+                    <td>{{ air_quality.o3 }} µg/m³</td>
+                </tr>
+                <tr>
+                    <td>SO₂ (Sulphur Dioxide)</td>
+                    <td>{{ air_quality.so2 }} µg/m³</td>
+                </tr>
+                <tr>
+                    <td>PM 2.5 (Particle polution)</td>
+                    <td>{{ air_quality.pm2_5 }} µg/m³</td>
+                </tr>
+                <tr>
+                    <td>PM 10 (Particle polution)</td>
+                    <td>{{ air_quality.pm10 }} µg/m³</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text">
+        <br>
+        <h3>Air Quality Indexes:</h3>
+        <br>
+        <p><strong>US EPA Index:</strong> {{ air_quality['us-epa-index'] }} - 
+            {% if air_quality['us-epa-index'] == 1 %}
+                Good
+            {% elif air_quality['us-epa-index'] == 2 %}
+                Moderate
+            {% elif air_quality['us-epa-index'] == 3 %}
+                Unhealthy for sensitive group
+            {% elif air_quality['us-epa-index'] == 4 %}
+                Unhealthy
+            {% elif air_quality['us-epa-index'] == 5 %}
+                Very Unhealthy
+            {% else %}
+                Hazardous
+            {% endif %}
+        </p>
+        <p><strong>GB DEFRA Index:</strong> {{ air_quality['gb-defra-index'] }} - 
+            {% if 1 <= air_quality['gb-defra-index'] <= 3 %}
+                Low
+            {% elif 4 <= air_quality['gb-defra-index'] <= 6 %}
+                Moderate
+            {% elif 7 <= air_quality['gb-defra-index'] <= 9 %}
+                High
+            {% else %}
+                Very high
+            {% endif %}
+        </p>
+    </div>
+    <br><br>
+    <h3>Select a date below to get more detailed information about the weather:</h3>
+    <br>
     <div class="container d-flex justify-content-center text">
         {% for forecast in forecasts %}
             <div class="forecast-card" data-forecast-index="{{ loop.index }}" onclick="showForecast(this)">
@@ -98,6 +168,7 @@
     <div class="forecast-content">
         {% for forecast in forecasts %}
             <div class="forecast-details" id="forecast-{{ loop.index }}" style="display: none;">
+                <br>
                 <h1>Extra information for {{ forecast.date | dt_date }}</h1>
                 <br><br>
                 <div class="text">
@@ -126,75 +197,7 @@
                         </div>
                     </div>
                     <br>
-                    <h1>Air Quality</h1>
-                    <br>
-                </div>
-                <div>
-                    <table class="table table-striped table-bordered">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th>Pollutant</th>
-                                <th>Concentration</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>CO (Carbon Monoxide)</td>
-                                <td>{{ forecast.day.air_quality.co }} µg/m³</td>
-                            </tr>
-                            <tr>
-                                <td>NO₂ (Nitrogen Dioxide)</td>
-                                <td>{{ forecast.day.air_quality.no2 }} µg/m³</td>
-                            </tr>
-                            <tr>
-                                <td>O₃ (Ozone)</td>
-                                <td>{{ forecast.day.air_quality.o3 }} µg/m³</td>
-                            </tr>
-                            <tr>
-                                <td>SO₂ (Sulphur Dioxide)</td>
-                                <td>{{ forecast.day.air_quality.so2 }} µg/m³</td>
-                            </tr>
-                            <tr>
-                                <td>PM 2.5 (Particle polution)</td>
-                                <td>{{ forecast.day.air_quality.pm2_5 }} µg/m³</td>
-                            </tr>
-                            <tr>
-                                <td>PM 10 (Particle polution)</td>
-                                <td>{{ forecast.day.air_quality.pm10 }} µg/m³</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="text">
-                    <br>
-                    <h3>Air Quality Indexes:</h3>
-                    <br>
-                    <p><strong>US EPA Index:</strong> {{ forecast.day.air_quality['us-epa-index'] }} - 
-                        {% if forecast.day.air_quality['us-epa-index'] == 1 %}
-                            Good
-                        {% elif forecast.day.air_quality['us-epa-index'] == 2 %}
-                            Moderate
-                        {% elif forecast.day.air_quality['us-epa-index'] == 3 %}
-                            Unhealthy for sensitive group
-                        {% elif forecast.day.air_quality['us-epa-index'] == 4 %}
-                            Unhealthy
-                        {% elif forecast.day.air_quality['us-epa-index'] == 5 %}
-                            Very Unhealthy
-                        {% else %}
-                            Hazardous
-                        {% endif %}
-                    </p>
-                    <p><strong>GB DEFRA Index:</strong> {{ forecast.day.air_quality['gb-defra-index'] }} - 
-                        {% if 1 <= forecast.day.air_quality['gb-defra-index'] <= 3 %}
-                            Low
-                        {% elif 4 <= forecast.day.air_quality['gb-defra-index'] <= 6 %}
-                            Moderate
-                        {% elif 7 <= forecast.day.air_quality['gb-defra-index'] <= 9 %}
-                            High
-                        {% else %}
-                            Very high
-                        {% endif %}
-                    </p>
+                    
                 </div>
                 <br>
                 <h3>Hourly Forecast</h3>
