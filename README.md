@@ -28,9 +28,9 @@ HTML that contains all the information about the weather. It is split into a few
 - The **main part** contains the current conditions, temperature, feels-like temperature, and the last updated time. These were considered the most important data, so they are presented prominently.
 - To its side, there is information about the location, such as the name, region, country, timezone, and local time.
 - Below, there is the rest of the current weather information, split across sections: humidity, pressure, UV, precipitation, and wind information, such as speed, direction, degree, and gust speed. This section finishes the area of current weather information.
+- Then, there is information about air quality, starting with a table showing the concentration of common pollutants in the atmosphere, followed by two indexes that classify air quality: the US EPA Index and the GB DEFRA Index.
 - Below that, if there is any alert for the city, there's a section with alerts, colored according to their severity (red for severe, yellow otherwise). These alerts contain useful information, such as the event type, description, instructions, areas affected, severity, urgency, and certainty, along with a header summarizing the information.
 - Lastly, there is the **future information section**, which contains detailed information for the current day and the following two days. The user can select which day to get more detailed information about, and a new section will appear. This section includes maximum, minimum, and average temperatures, average wind speed, chance of rain, chance of snow, total precipitation, maximum wind speed, total snow, average humidity and visibility. It also contains astronomical information such as the moon phase and the exact times of sunrise, sunset, moonrise, and moonset.
-- Then, there is information about air quality, starting with a table showing the concentration of common pollutants in the atmosphere, followed by two indexes that classify air quality: the US EPA Index and the GB DEFRA Index.
 - The last part of this section contains a table with complete hourly weather information.
 
 ## Static Files
